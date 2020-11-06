@@ -40,7 +40,7 @@ let moduloUser = {
    
         usuarios.push(usuario);
         this.guardarJSON(usuarios);
-        console.log("Ususario generado correctamente.")
+        console.log("Usuario generado correctamente.")
     }
     }
 },
@@ -51,13 +51,26 @@ let moduloUser = {
         })
         let eliminadoP = usuarios.filter(function(user){
             return user.password != password
+            
         })
+        let eM = usuarios.filter(function (user) {
+            return user.mail == mail 
+        })
+        let eP = usuarios.filter(function(user){
+            return user.password == password
+            
+        })
+        if (eP[0] == undefined){
+            console.log("Ingrese un nombre de usuario y contraseña correctos.")
+        }else if(eM[0] == undefined){
+            console.log("Ingrese un nombre de usuario y contraseña correctos.")
+        }
+        
         if (eliminadoM.length === eliminadoP.length){
             this.guardarJSON(eliminadoM);
             console.log("El usuario ha sido eliminado")
-        }else{
-            console.log("Ingrese un usuario y contraseña correctos.")
         }
+        
     },
     existe : function(mail2,password2){
         let usuarios2 = this.leerJSON();

@@ -23,7 +23,12 @@ switch (comando) {
     case "eliminar":
         let mail1 = process.argv[3];
         let password1 = process.argv[4];
+        let usuariosE = modulos.leerJSON();
+        if(usuariosE[0] == undefined){
+            console.log("Ingrese un nombre de usuario y contraseña correctos")
+        }else{
         moduloUser.eliminar(mail1,password1)
+        }
         break;
     case "login":
         let mail2 = process.argv[3];
